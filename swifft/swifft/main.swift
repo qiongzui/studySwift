@@ -143,3 +143,19 @@ let numbers = [4, 7, 5]
 //let eventNums = filterInts(numbers, {num in num % 2 == 0})
 //let eventNums = filterInts(numbers, {$0 % 2 == 0})
 let eventNums = filterInts(numbers) {$0 % 2 == 0}
+
+func filter<Element> (_ source: [Element] ,_ includeElement: (Element)->Bool) -> [Element]{
+    var result: [Element] = [];
+    for element in source {
+        if includeElement(element) {
+            result.append(element);
+        }
+    }
+    return result;
+}
+
+let names = ["sss", "ddd", "ccc"]
+
+let selname = names.filter {name in name.count < 5}.map {name in name.uppercased()}
+
+print("selname is \(selname)")
